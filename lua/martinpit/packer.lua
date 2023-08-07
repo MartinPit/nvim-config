@@ -14,20 +14,17 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use { "catppuccin/nvim", as = "catppuccin" }
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
-            {                  -- Optional
+            {                            -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.api.nvim_command, 'MasonUpdate')
@@ -36,11 +33,19 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
 
     use('rstacruz/vim-closer')
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use { 'catppuccin/nvim', as = 'catppuccin' }
+    use "EdenEast/nightfox.nvim" -- Packer
+    use { 'folke/tokyonight.nvim' }
+    use { 'decaycs/decay.nvim', as = 'decay' }
+    use('https://github.com/rktjmp/lush.nvim')
+    use{'/nocksock/bloop.nvim', as = 'bloop'}
+    use{'xiyaowong/transparent.nvim'}
 end)
