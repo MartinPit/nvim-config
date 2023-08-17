@@ -46,6 +46,13 @@ return require('packer').startup(function(use)
     use { 'folke/tokyonight.nvim' }
     use { 'decaycs/decay.nvim', as = 'decay' }
     use('https://github.com/rktjmp/lush.nvim')
-    use{'/nocksock/bloop.nvim', as = 'bloop'}
-    use{'xiyaowong/transparent.nvim'}
+    use { 'xiyaowong/transparent.nvim' }
+    use { 'windwp/nvim-ts-autotag' }
+    use { 'github/copilot.vim' }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 end)

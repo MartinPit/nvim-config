@@ -17,7 +17,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space>'] = cmp.mapping.complete(),
 })
 
-
 lsp.set_preferences({
     sign_icons = {}
 })

@@ -24,3 +24,5 @@ vim.keymap.set("n", "<leader>f", function()
 end)
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {silent = true})
+
+vim.api.nvim_set_keymap('i', '<M-CR>', 'copilot#Accept("<CR>")', {expr=true, silent=true})
