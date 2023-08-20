@@ -1,1 +1,0 @@
-/home/xpitona1/.config/nvim/themes/Catppuccin-Mocha.lua
