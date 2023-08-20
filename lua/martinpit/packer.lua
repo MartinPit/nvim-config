@@ -55,4 +55,5 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install"})
 end)
