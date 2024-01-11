@@ -1,2 +1,7 @@
-vim.cmd('colorscheme bloop')
-vim.cmd('TransparentEnable')
+vim.o.background = 'dark'
+require('decay').setup({
+    style = 'default',
+})
+
+vim.cmd('colorscheme decay')
+vim.cmd('e')

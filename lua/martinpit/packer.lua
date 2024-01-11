@@ -42,11 +42,8 @@ return require('packer').startup(function(use)
     use('rstacruz/vim-closer')
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use { 'catppuccin/nvim', as = 'catppuccin' }
-    use "EdenEast/nightfox.nvim" -- Packer
     use { 'folke/tokyonight.nvim' }
-    use { 'decaycs/decay.nvim', as = 'decay' }
-    use('https://github.com/rktjmp/lush.nvim')
-    use { 'xiyaowong/transparent.nvim' }
+    use { 'xiyaowong/transparent.nvim', vim.cmd('TransparentEnable') }
     use { 'windwp/nvim-ts-autotag' }
     use { 'github/copilot.vim' }
     use {
@@ -56,5 +53,12 @@ return require('packer').startup(function(use)
         end
     }
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
-    use('https://github.com/nocksock/bloop.nvim')
+    use { 'decaycs/decay.nvim', as = 'decay' }
+    use { 'yorik1984/newpaper.nvim' }
+    use {
+    'mcchrish/zenbones.nvim',
+    requires = 'rktjmp/lush.nvim'
+    }
+    use { 'miikanissi/modus-themes.nvim' }
+    use { 'morhetz/gruvbox' }
 end)

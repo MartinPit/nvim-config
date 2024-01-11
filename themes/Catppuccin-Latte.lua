@@ -1,5 +1,3 @@
-require('catppuccin').setup({
-    transparent = vim.g.transparent_enabled
-})
-
+vim.o.background = "light"
 vim.cmd('colorscheme catppuccin-latte')
+vim.cmd('e')
