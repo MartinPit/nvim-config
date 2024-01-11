@@ -4,4 +4,7 @@ require('decay').setup({
 })
 
 vim.cmd('colorscheme decay')
-vim.cmd('e')
+local ok, res = pcall(vim.cmd, 'e')
+if not ok then
+end
+

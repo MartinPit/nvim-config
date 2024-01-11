@@ -3,5 +3,7 @@ require('rose-pine').setup({
 })
 
 vim.cmd('colorscheme rose-pine')
-vim.cmd('e')
+local ok, res = pcall(vim.cmd, 'e')
+if not ok then
+end
 

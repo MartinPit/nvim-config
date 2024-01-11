@@ -1,2 +1,5 @@
 vim.cmd('colorscheme tokyonight-storm')
-vim.cmd('e')
+local ok, res = pcall(vim.cmd, 'e')
+if not ok then
+end
+
