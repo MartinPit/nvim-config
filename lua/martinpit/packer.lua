@@ -56,9 +56,15 @@ return require('packer').startup(function(use)
     use { 'decaycs/decay.nvim', as = 'decay' }
     use { 'yorik1984/newpaper.nvim' }
     use {
-    'mcchrish/zenbones.nvim',
-    requires = 'rktjmp/lush.nvim'
+        'mcchrish/zenbones.nvim',
+        requires = 'rktjmp/lush.nvim'
     }
     use { 'miikanissi/modus-themes.nvim' }
     use { 'morhetz/gruvbox' }
+    use { 'kristijanhusak/vim-dadbod-ui',
+        requires = {
+            { 'tpope/vim-dadbod' },
+            { 'kristijanhusak/vim-dadbod-completion' },
+        }
+    }
 end)
