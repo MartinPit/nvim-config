@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
-    use('tpope/vim-fugitive')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -66,5 +65,15 @@ return require('packer').startup(function(use)
             { 'tpope/vim-dadbod' },
             { 'kristijanhusak/vim-dadbod-completion' },
         }
+    }
+    use {
+        "kdheepak/lazygit.nvim",
+        requires = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("telescope").load_extension("lazygit")
+        end,
     }
 end)
