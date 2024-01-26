@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use { 'catppuccin/nvim', as = 'catppuccin' }
     use { 'folke/tokyonight.nvim' }
-    use { 'xiyaowong/transparent.nvim', vim.cmd('TransparentEnable') }
+    use { 'xiyaowong/transparent.nvim' }
     use { 'windwp/nvim-ts-autotag' }
     use { 'github/copilot.vim' }
     use {
