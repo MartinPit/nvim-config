@@ -21,16 +21,45 @@ lsp.set_preferences({
     sign_icons = {}
 })
 
-lsp.setup_nvim_cmp({
+cmp.setup({
     mapping = cmp_mappings,
     sources = {
         { lsp.defaults.cmp_sources() },
         { name = 'vim-dadbod-completion' },
         { name = 'buffer' },
-        { name = 'nvim_lsp' }
+        { name = 'nvim_lsp' },
+        { name = 'path' },
+        { name = 'nvim_lsp_signature_help' }
     }
 })
 
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'buffer' }
+    }, {
+        { name = 'nvim_lsp_document_symbol' }
+    })
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' },
+        { name = 'buffer' }
+    }, {
+        {
+            name = 'cmdline',
+            option = {
+                ignore_cmds = { 'Man', '!' }
+            }
+        }
+    })
+})
+
+lsp.setup({
+    cmp = cmp,
+})
 
 lsp.on_attach(function(client, buff)
     local opts = { buffer = buff, remap = false }
