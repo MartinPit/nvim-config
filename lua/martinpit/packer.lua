@@ -84,4 +84,5 @@ return require('packer').startup(function(use)
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }, config = function() require('dapui').setup() end }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'mfussenegger/nvim-dap-python', config = function() require('dap-python').setup('~/.virtualenvs/debugpy/bin/python') end }
+    use { 'lewis6991/gitsigns.nvim' }
 end)
