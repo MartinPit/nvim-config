@@ -83,6 +83,21 @@ return require('packer').startup(function(use)
     }
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }, config = function() require('dapui').setup() end }
     use { 'theHamsta/nvim-dap-virtual-text' }
-    use { 'mfussenegger/nvim-dap-python', config = function() require('dap-python').setup('~/.virtualenvs/debugpy/bin/python') end }
+    use { 'mfussenegger/nvim-dap-python', config = function()
+        require('dap-python').setup(
+            '~/.virtualenvs/debugpy/bin/python')
+    end }
     use { 'lewis6991/gitsigns.nvim' }
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
+        config = function()
+            require("barbecue").setup()
+        end,
+    })
 end)
