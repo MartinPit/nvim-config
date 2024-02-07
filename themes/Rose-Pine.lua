@@ -6,9 +6,10 @@ vim.cmd('colorscheme rose-pine')
 vim.cmd('source ~/.config/nvim/after/plugin/gitsigns.lua')
 vim.cmd('source ~/.config/nvim/after/plugin/transparent.lua')
 
+local rose = require('lualine.themes.rose-pine')
 require('lualine').setup {
   options = {
-    theme = 'rose-pine',
+    theme = rose,
   },
 }
 local ok, res = pcall(vim.cmd, 'e')

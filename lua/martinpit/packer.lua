@@ -97,7 +97,9 @@ return require('packer').startup(function(use)
         },
         after = "nvim-web-devicons",       -- keep this if you're using NvChad
         config = function()
-            require("barbecue").setup()
+            require("barbecue").setup({
+                theme = { bg = 'NONE' },
+            })
         end,
     })
     use {
