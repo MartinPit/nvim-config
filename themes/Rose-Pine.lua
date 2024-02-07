@@ -4,6 +4,7 @@ require('rose-pine').setup({
 })
 vim.cmd('colorscheme rose-pine')
 vim.cmd('source ~/.config/nvim/after/plugin/gitsigns.lua')
+vim.cmd('source ~/.config/nvim/after/plugin/transparent.lua')
 
 require('lualine').setup {
   options = {
