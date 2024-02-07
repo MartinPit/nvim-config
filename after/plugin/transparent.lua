@@ -11,3 +11,7 @@ require("transparent").setup({ -- Optional, you don't have to run setup.
 })
 
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextHint', { bg = 'NONE' })
