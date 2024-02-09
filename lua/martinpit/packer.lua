@@ -95,11 +95,9 @@ return require('packer').startup(function(use)
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
-        after = "nvim-web-devicons",       -- keep this if you're using NvChad
+        after = "nvim-web-devicons",
         config = function()
-            require("barbecue").setup({
-                theme = { bg = 'NONE' },
-            })
+            require("barbecue").setup()
         end,
     })
     use {
@@ -116,4 +114,5 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    use { 'axkirillov/easypick.nvim', requires = 'nvim-telescope/telescope.nvim' }
 end)
