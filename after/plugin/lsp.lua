@@ -26,6 +26,8 @@ require('lspconfig').cssls.setup({
     on_attach = lsp.on_attach,
 })
 
+require('lspconfig').tsserver.setup({})
+
 lsp.set_sign_icons({
     error = '✘',
     warn = '',
