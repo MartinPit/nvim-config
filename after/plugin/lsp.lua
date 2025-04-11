@@ -5,9 +5,10 @@ lsp.preset('recommended')
 lsp.ensure_installed({
     'html',
     'cssls',
-    'tsserver',
+    'ts_ls',
     'eslint',
     'rust_analyzer',
+    'lua_ls'
 })
 
 local cmp = require('cmp')
@@ -26,7 +27,7 @@ require('lspconfig').cssls.setup({
     on_attach = lsp.on_attach,
 })
 
-require('lspconfig').tsserver.setup({})
+require('lspconfig').ts_ls.setup({})
 
 lsp.set_sign_icons({
     error = '✘',
