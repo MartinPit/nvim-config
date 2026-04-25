@@ -1,47 +1,59 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    vim.keymap.set("n", "C-h", function() ui.nav_file(1) end)
-    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'nvim-lua/plenary.nvim' -- Essential dependency for many plugins
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        }
     }
 
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
+
+    -- LSP-Zero v3.x (Corrected for Neovim 0.11+)
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        branch = 'v3.x',
         requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.api.nvim_command, 'MasonUpdate')
-                end,
-            },
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-cmdline' },
             { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-cmdline' },
             { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
             { 'hrsh7th/cmp-nvim-lsp-signature-help' }
         }
     }
 
+    -- Refactoring Plugin (Fixed with missing dependency)
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            { "lewis6991/async.nvim" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-treesitter/nvim-treesitter",
+                lazy = false,
+                build = ':TSUpdate',
+                run = function()
+                    local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+                    ts_update()
+                end, }
+        }
+    }
+
+    -- UI and Themes
     use('rstacruz/vim-closer')
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use { 'catppuccin/nvim', as = 'catppuccin' }
@@ -51,19 +63,16 @@ return require('packer').startup(function(use)
     use { 'github/copilot.vim' }
     use {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+        config = function() require('Comment').setup() end
     }
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
     use { 'decaycs/decay.nvim', as = 'decay' }
     use { 'yorik1984/newpaper.nvim' }
-    use {
-        'mcchrish/zenbones.nvim',
-        requires = 'rktjmp/lush.nvim'
-    }
+    use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
     use { 'miikanissi/modus-themes.nvim' }
     use { 'morhetz/gruvbox' }
+
+    -- Databases and Git
     use { 'kristijanhusak/vim-dadbod-ui',
         requires = {
             { 'tpope/vim-dadbod' },
@@ -72,38 +81,13 @@ return require('packer').startup(function(use)
     }
     use {
         "kdheepak/lazygit.nvim",
-        requires = {
-            "nvim-telescope/telescope.nvim",
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            require("telescope").load_extension("lazygit")
-        end,
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+        config = function() require("telescope").load_extension("lazygit") end,
     }
-    use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'lewis6991/gitsigns.nvim' }
-    use({
-        "utilyre/barbecue.nvim",
-        tag = "*",
-        requires = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
-        },
-        after = "nvim-web-devicons",
-        config = function()
-            require("barbecue").setup()
-        end,
-    })
-    use {
-        "ThePrimeagen/refactoring.nvim",
-        requires = {
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-treesitter/nvim-treesitter" }
-        }
-    }
-    use {
-        'linrongbin16/lsp-progress.nvim',
-    }
+
+    -- Status and Progress
+    use { 'linrongbin16/lsp-progress.nvim' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
